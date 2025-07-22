@@ -62,18 +62,28 @@ def handle_player_present_collision():
             print("Present collected!")
             break
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
+
+class Entity(pygame.sprite.Sprite):
+    def __init__(self, image, position):
         super().__init__()
-        self.image = player_surface
-        self.rect = player_rect
+        self.image = image
+        self.image = pygame.transform.scale(self.image, (64, 64))
+        self.rect = position
+        self.__speed = 5
 
     def update(self):
-        self.handle_movement()
-        self.handle_shoot()
         screen.blit(self.image, self.rect)
 
-    def handle_movement(self):
+class Player(Entity):
+    def __init__(self):
+        super().__init__(player_surface, player_rect)
+
+    def update(self):
+        super().update()
+        self.__handle_movement()
+        self.__handle_shoot()
+
+    def __handle_movement(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.rect.x -= 5
@@ -84,15 +94,29 @@ class Player(pygame.sprite.Sprite):
             if self.rect.left > width:
                 self.rect.right = 0
 
-    def handle_shoot(self):
+    def __handle_shoot(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             bullet_surface = pygame.Surface((5, 20))
             bullet_surface.fill('Yellow')
             bullet_rect = bullet_surface.get_rect(midbottom=(self.rect.centerx, self.rect.top))
-            bullet_list.append((bullet_surface, bullet_rect))
+            entities.append(Bullet(bullet_rect))
 
-player = Player()
+class Bullet(Entity):
+    def __init__(self, position):
+        surface = pygame.Surface((5, 20))
+        super().__init__(surface, position)
+        self.image.fill('Yellow')
+
+    def update(self):
+        super().update()
+        self.rect.y -= 10
+
+    def hit(self):
+        return
+
+entities = [Player()]
+
 # Main game loop
 while True:
     # Handle game exit
@@ -100,13 +124,14 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    if xyz:
+        draw_surroundings()
+        handle_player_present_collision()
+        draw_presents()
+        for entity in entities:
+            entity.update()
 
-    draw_surroundings()
-    player.update()
-    handle_player_present_collision()
-    draw_presents()
-    handle_bullets()
 
-    # Update the display
+        # Update the display
     pygame.display.update()
     clock.tick(60) # Limit to 60 FPS
