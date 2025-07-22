@@ -124,12 +124,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    if xyz:
-        draw_surroundings()
-        handle_player_present_collision()
-        draw_presents()
-        for entity in entities:
-            entity.update()
+
+    draw_surroundings()
+    handle_player_present_collision()
+    draw_presents()
+    for entity in entities:
+        entity.update()
 
 
         # Update the display
