@@ -24,6 +24,7 @@ class AnimationManager(Behaviour):
         else:
             raise ValueError(f"Animation '{name}' not found")
 
+
     def update(self):
         if self.current_animation:
             # Logic to update the current animation frame
