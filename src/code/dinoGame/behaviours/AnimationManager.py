@@ -9,7 +9,7 @@ class AnimationManager(Behaviour):
         self.entity = self_entity
         self.current_animation = None
         self.animations = {}
-        self.loop = False
+        self.loop = True
 
         # 0 - each frame is displayed for 1 frame
         # 1 - each frame is displayed for 2 frames, etc.

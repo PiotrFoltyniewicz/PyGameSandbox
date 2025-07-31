@@ -1,6 +1,9 @@
 from src.code.framework.Behaviour import Behaviour
 import pygame
 
+from src.code.framework.MainGame import MainGame
+
+
 class PlayerMovement(Behaviour):
     def __init__(self, self_entity: 'PlayerDino'):
         super().__init__(self_entity)

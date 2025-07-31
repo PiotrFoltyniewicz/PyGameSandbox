@@ -12,7 +12,7 @@ class MainGame(metaclass=SingletonMeta):
         self.screen = pygame.display.set_mode((self.width, self.height))
         self.clock = pygame.time.Clock()
 
-        pygame.display.set_caption('The Game')
+        pygame.display.set_caption(title)
 
     def run_game(self):
         while True:
