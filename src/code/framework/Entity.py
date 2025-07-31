@@ -22,11 +22,12 @@ class Entity(pygame.sprite.Sprite):
         for behaviour in self.__behaviours:
             behaviour.action()
 
-    def add_behaviour(self, behaviour: 'Behaviour'):
+    def add_behaviour(self, behaviour: 'Behaviour') -> 'Behaviour':
         for existing_behaviour in self.__behaviours:
             if isinstance(existing_behaviour, type(behaviour)):
                 raise ValueError(f"behaviour of type {type(behaviour).__name__} already exists.")
         self.__behaviours.append(behaviour)
+        return behaviour
 
     def remove_behaviour(self, behaviour: 'Behaviour'):
         if behaviour in self.__behaviours:

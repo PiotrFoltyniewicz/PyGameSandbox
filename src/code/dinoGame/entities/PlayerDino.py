@@ -1,4 +1,5 @@
 from src.code.dinoGame.behaviours.PlayerMovement import PlayerMovement
+from src.code.dinoGame.behaviours.AnimationManager import AnimationManager
 from src.code.framework.Entity import Entity
 import pygame
 
@@ -10,7 +11,12 @@ class PlayerDino(Entity):
 
         # Image rotation
         self.orientation = 'Right'
-        self.add_behaviour(PlayerMovement(self))
+        self.player_movement: PlayerMovement = self.add_behaviour(PlayerMovement(self))
+        self.animation_manager: AnimationManager = self.add_behaviour(AnimationManager(self))
+
+        self.animation_manager.add_animation('move', 'resources/DinoGreen/MoveAnimation')
+        self.animation_manager.set_animation('move')
+
 
     # Currently only flipping Right and Left
     def set_orientation(self, new_orientation: str):

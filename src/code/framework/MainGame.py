@@ -24,3 +24,4 @@ class MainGame(metaclass=SingletonMeta):
             self.current_scene.update()
             pygame.display.update()
             self.clock.tick(60)
+            
