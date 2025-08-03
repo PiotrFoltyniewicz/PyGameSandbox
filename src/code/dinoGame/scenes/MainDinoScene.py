@@ -16,7 +16,7 @@ class MainDinoScene(Scene):
                                    draw_order= 100,
                                    position= (MainGame().width / 2, MainGame().height / 2)))
 
-        self.add_entity(Goblin(image=load_image('resources/Goblin/RunAnimation/GoblinRun1.png', (64, 64)),
-                               name='Goblin',
-                               draw_order=8,
-                               position=(MainGame().width / 2 + 100, MainGame().height / 2)))
+#        self.add_entity(Goblin(image=load_image('resources/Goblin/RunAnimation/GoblinRun1.png', (64, 64)),
+#                               name='Goblin',
+#                               draw_order=8,
+#                               position=(MainGame().width / 2 + 100, MainGame().height / 2)))
