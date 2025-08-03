@@ -20,3 +20,11 @@ class MainDinoScene(Scene):
 #                               name='Goblin',
 #                               draw_order=8,
 #                               position=(MainGame().width / 2 + 100, MainGame().height / 2)))
+
+    def update(self):
+        self.spawn_goblin()
+        super().update()
+
+    # Spawn a goblin at a random position, which is not too near the player
+    def spawn_goblin(self, distance_from_player: int = 200):
+        pass
