@@ -31,6 +31,6 @@ class Scene:
     def __draw_entities(self):
         # Sort entities by order and draw them
         sorted_entities = sorted(self.__entities, key=lambda e: -e.order)
-        MainGame().screen.fill((0, 0, 0))
+        MainGame().screen.fill((34, 107, 38))
         for entity in sorted_entities:
             MainGame().screen.blit(entity.image, entity.rect)

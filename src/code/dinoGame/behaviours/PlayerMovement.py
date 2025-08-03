@@ -1,3 +1,5 @@
+from pygame import Vector2
+
 from src.code.framework.Behaviour import Behaviour
 import pygame
 
@@ -11,13 +13,25 @@ class PlayerMovement(Behaviour):
 
     def action(self):
         keys = pygame.key.get_pressed()
+        has_moved = False
+        direction = Vector2
         if keys[pygame.K_LEFT]:
             self.entity.rect.x -= self.entity.speed
-            self.entity.set_orientation('Left')
+            self.entity.animation_manager.set_orientation('Left')
+            has_moved = True
         if keys[pygame.K_RIGHT]:
             self.entity.rect.x += self.entity.speed
-            self.entity.set_orientation('Right')
+            self.entity.animation_manager.set_orientation('Right')
+            has_moved = True
         if keys[pygame.K_UP]:
             self.entity.rect.y -= self.entity.speed
+            has_moved = True
         if keys[pygame.K_DOWN]:
             self.entity.rect.y += self.entity.speed
+            has_moved = True
+
+        # Change animation based on movement
+        if has_moved:
+            self.entity.animation_manager.set_animation('move')
+        else:
+            self.entity.animation_manager.set_animation('idle')

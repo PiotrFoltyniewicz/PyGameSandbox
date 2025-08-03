@@ -10,19 +10,14 @@ class PlayerDino(Entity):
         self.speed: float = 5.0  # Movement speed
 
         # Image rotation
-        self.orientation = 'Right'
         self.player_movement: PlayerMovement = self.add_behaviour(PlayerMovement(self))
+
+
+        # Initialize animations
         self.animation_manager: AnimationManager = self.add_behaviour(AnimationManager(self))
-
-        self.animation_manager.add_animation('move', 'resources/DinoGreen/MoveAnimation')
-        self.animation_manager.set_animation('move')
-
-
-    # Currently only flipping Right and Left
-    def set_orientation(self, new_orientation: str):
-        if self.orientation != new_orientation:
-            self.image = pygame.transform.flip(self.image, True, False)
-            self.orientation = new_orientation
+        self.animation_manager.add_animation('idle', 'resources/DinoGreen/IdleAnimation', True)
+        self.animation_manager.set_default_animation('idle')
+        self.animation_manager.add_animation('move', 'resources/DinoGreen/MoveAnimation', True)
 
     def update(self):
         super().update()
