@@ -8,7 +8,7 @@ from typing import List, TYPE_CHECKING
 class Entity(pygame.sprite.Sprite):
     def __init__(self, image: pygame.Surface, name, draw_order, position = (0, 0)):
         super().__init__()
-        self.image = pygame.transform.scale(image, (64, 64))
+        self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = position[0]
         self.rect.y = position[1]
