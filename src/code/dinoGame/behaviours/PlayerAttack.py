@@ -1,8 +1,11 @@
 from src.code.framework.Behaviour import Behaviour
 import pygame
+from src.code.framework.MainGame import MainGame
+from src.code.framework.UtilityFunctions import load_image
+from src.code.dinoGame.entities.Fireball import Fireball
 
 class PlayerAttack(Behaviour):
-    def __init__(self, self_entity: 'Player'):
+    def __init__(self, self_entity: 'PlayerDino'):
         super().__init__(self_entity)
         self.entity = self_entity
         self.attack_cooldown_left = 0
@@ -19,4 +22,9 @@ class PlayerAttack(Behaviour):
         # Attack behaviour
         # 1. Check orientation of the player
         # 2. Spawn fireball in the correct direction
-        pass
+        x = self.entity.rect.right
+        y = self.entity.rect.centery
+        MainGame().current_scene.add_entity(Fireball(image=load_image('resources/DinoGreen/IdleAnimation/DinoIdle1.png', (64, 64)),
+                                   name='Fireball',
+                                   draw_order=150,
+                                   position=(x, y)))
