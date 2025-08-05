@@ -20,4 +20,5 @@ class Fireball(Entity):
 
     def move_forward(self):
         # Move the fireball forward based on its speed
+        pass
 
