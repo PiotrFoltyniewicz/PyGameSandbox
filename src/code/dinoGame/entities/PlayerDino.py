@@ -1,4 +1,5 @@
 from src.code.dinoGame.behaviours.PlayerMovement import PlayerMovement
+from src.code.dinoGame.behaviours.PlayerAttack import PlayerAttack
 from src.code.dinoGame.behaviours.AnimationManager import AnimationManager
 from src.code.framework.Entity import Entity
 import pygame
@@ -11,6 +12,7 @@ class PlayerDino(Entity):
 
         # Image rotation
         self.player_movement: PlayerMovement = self.add_behaviour(PlayerMovement(self))
+        self.player_attack: PlayerAttack = self.add_behaviour(PlayerAttack(self))
 
 
         # Initialize animations
