@@ -13,7 +13,9 @@ class PlayerAttack(Behaviour):
 
     def action(self):
         # Add cooldown management
-        # HERE
+        # jeżeli attack_cooldown_left < 0 można attakować
+        # inaczej nie
+        # dodatkowe punkty jeżeli cooldown będzie w sekundach
 
         if pygame.key.get_pressed()[pygame.K_SPACE]:
             self.attack()

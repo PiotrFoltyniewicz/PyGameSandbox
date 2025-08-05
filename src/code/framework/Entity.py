@@ -10,8 +10,7 @@ class Entity(pygame.sprite.Sprite):
         super().__init__()
         self.image = image
         self.rect = self.image.get_rect()
-        self.rect.x = position[0]
-        self.rect.y = position[1]
+        self.rect.center = position
         self.name: str = name
         # higher order means it will be drawn on top
         self.order: int = draw_order

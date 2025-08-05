@@ -14,7 +14,6 @@ class Goblin(Entity):
         self.attack_power = 10
         self.speed = 2
         self.image = image
-        self.rect = self.image.get_rect()
 
         self.goblin_movement: GoblinMovement = self.add_behaviour(GoblinMovement(self))
 

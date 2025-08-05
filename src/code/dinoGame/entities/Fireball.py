@@ -11,7 +11,6 @@ class Fireball(Entity):
         self.speed: float = 10.0
         self.time_to_live: float = 2.0
         self.image = image
-        self.rect = self.image.get_rect()
 
 
 
