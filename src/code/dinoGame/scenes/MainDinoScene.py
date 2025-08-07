@@ -11,7 +11,7 @@ class MainDinoScene(Scene):
         super().__init__(name)
 
         # Initialize the scene with necessary entities, behaviours, and behaviors
-        self.add_entity(PlayerDino(image = load_image('resources/DinoGreen/IdleAnimation/DinoIdle1.png', (64, 64)),
+        self.add_entity(PlayerDino(image = load_image('resources/DinoGreen/IdleAnimation/DinoIdle1.png', (85, 85)),
                                    name = 'Player',
                                    draw_order= 100,
                                    position= (MainGame().width / 2, MainGame().height / 2)))
