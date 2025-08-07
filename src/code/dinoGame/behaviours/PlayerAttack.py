@@ -26,7 +26,7 @@ class PlayerAttack(Behaviour):
         # 2. Spawn fireball in the correct direction
         x = self.entity.rect.right
         y = self.entity.rect.centery
-        MainGame().current_scene.add_entity(Fireball(image=load_image('resources/DinoGreen/IdleAnimation/DinoIdle1.png', (64, 64)),
+        MainGame().current_scene.add_entity(Fireball(image=load_image('resources/Attacks/fireball.png', (64, 64)),
                                    name='Fireball',
                                    draw_order=150,
                                    position=(x, y)))

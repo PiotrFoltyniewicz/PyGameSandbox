@@ -17,9 +17,9 @@ class PlayerDino(Entity):
 
         # Initialize animations
         self.animation_manager: AnimationManager = self.add_behaviour(AnimationManager(self))
-        self.animation_manager.add_animation('idle', 'resources/DinoGreen/IdleAnimation', True)
+        self.animation_manager.add_animation('idle', 'resources/DinoGreen/IdleAnimation', True, (85,85))
         self.animation_manager.set_default_animation('idle')
-        self.animation_manager.add_animation('move', 'resources/DinoGreen/MoveAnimation', True)
+        self.animation_manager.add_animation('move', 'resources/DinoGreen/MoveAnimation', True, (85,85))
 
     def update(self):
         super().update()

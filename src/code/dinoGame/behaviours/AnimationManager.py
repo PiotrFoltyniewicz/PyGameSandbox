@@ -17,11 +17,11 @@ class AnimationManager(Behaviour):
         self.animations = {}
         self.orientation: str = 'Right'
 
-    def add_animation(self, name: str, path_to_animation: str, loop: bool):
+    def add_animation(self, name: str, path_to_animation: str, loop: bool, target_size = (64, 64)):
         # load all images in the directory and add them to the animation
         frames = []
         for image_file in sorted(os.listdir(path_to_animation)):
-            frames.append(load_image(os.path.join(path_to_animation, image_file), (64, 64)))
+            frames.append(load_image(os.path.join(path_to_animation, image_file), target_size))
 
         self.animations[name] = Animation(name, frames, loop)
 
