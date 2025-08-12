@@ -28,7 +28,7 @@ class Scene:
     def remove_entity(self, entity: Entity):
         if entity in self.__entities:
             self.__entities.remove(entity)
-
+            del entity
     def __draw_entities(self):
         # Sort entities by order and draw them
         sorted_entities = sorted(self.__entities, key=lambda e: -e.order)
