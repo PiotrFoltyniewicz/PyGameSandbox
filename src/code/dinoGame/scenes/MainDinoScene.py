@@ -22,9 +22,12 @@ class MainDinoScene(Scene):
 #                               position=(MainGame().width / 2 + 100, MainGame().height / 2)))
 
     def update(self):
+        # spawn cooldown like with the fireball
         self.spawn_goblin()
         super().update()
 
     # Spawn a goblin at a random position, which is not too near the player
     def spawn_goblin(self, distance_from_player: int = 200):
+        # 1. pick random location on the screen which is not too near the player
+        # 2. spawn goblin there
         pass

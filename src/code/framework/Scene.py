@@ -16,6 +16,7 @@ class Scene:
         self.__draw_entities()
 
     def add_entity(self, entity: Entity):
+        # check if entity with the same name already exists
         self.__entities.append(entity)
 
     def get_entity_by_name(self, name: str) -> Optional[Entity]:

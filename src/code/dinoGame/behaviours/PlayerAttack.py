@@ -33,9 +33,11 @@ class PlayerAttack(Behaviour):
         if self.entity.animation_manager.orientation == 'Right':
             x = self.entity.rect.right
         else:
-            x = self.entity.rect.left - 64
+            x = self.entity.rect.left
         y = self.entity.rect.centery
-        MainGame().current_scene.add_entity(Fireball(image=load_image('resources/Attacks/fireball.png', (64, 64)),
+        new_fireball: Fireball = Fireball(image=load_image('resources/Attacks/Fireball/fireball.png', (64, 64)),
                                    name='Fireball',
                                    draw_order=150,
-                                   position=(x, y)))
+                                   position=(x, y))
+        new_fireball.animation_manager.set_orientation(self.entity.animation_manager.orientation)
+        MainGame().current_scene.add_entity(new_fireball)

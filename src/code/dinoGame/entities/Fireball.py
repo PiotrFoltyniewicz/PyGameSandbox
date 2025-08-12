@@ -1,4 +1,5 @@
 from src.code.framework.Entity import Entity
+from src.code.dinoGame.behaviours.AnimationManager import AnimationManager
 from src.code.framework.MainGame import MainGame
 import pygame
 
@@ -11,6 +12,12 @@ class Fireball(Entity):
         self.speed: float = 10.0
         self.time_to_live: float = 2.0
         self.image = image
+
+        self.animation_manager: AnimationManager = self.add_behaviour(AnimationManager(self))
+
+        self.animation_manager.add_animation('no_animation', 'resources/Attacks/Fireball', True, (64, 64))
+        self.animation_manager.set_default_animation('no_animation')
+        self.animation_manager.set_animation('no_animation')
 
 
 
