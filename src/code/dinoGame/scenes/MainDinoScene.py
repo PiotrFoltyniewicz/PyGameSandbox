@@ -40,15 +40,14 @@ class MainDinoScene(Scene):
     # Spawn a goblin at a random position, which is not too near the player
     def spawn_goblin(self, distance_from_player: int = 200):
 
-        x = random.randint(0, MainGame().width)
-        y = random.randint(0, MainGame().height)
-        PlayerPos: Vector2 = self.get_entity_by_name('Player').rect.center
-        if math.sqrt((PlayerPos.x - x)**2 + (PlayerPos.y - y)**2) < distance_from_player:
+        while True:
+            x = random.randint(0, MainGame().width)
+            y = random.randint(0, MainGame().height)
+            PlayerPos: Vector2 = Vector2(self.get_entity_by_name('Player').rect.center)
 
-            self.add_entity(Goblin(image=load_image('resources/Goblin/SpawnAnimation/GoblinSpawn1.png', (64, 64)),
-                                   name='Goblin',
-                                   draw_order=90,
-                                   position=(x,y)))
-        # 1. pick random location on the screen which is not too near the player
-        # 2. spawn goblin there
-        pass
+            if math.sqrt((PlayerPos.x - x)**2 + (PlayerPos.y - y)**2) > distance_from_player:
+                self.add_entity(Goblin(image=load_image('resources/Goblin/SpawnAnimation/GoblinSpawn1.png', (64, 64)),
+                                       name='Goblin',
+                                       draw_order=90,
+                                       position=(x,y)))
+                break
