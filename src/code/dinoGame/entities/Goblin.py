@@ -24,6 +24,9 @@ class Goblin(Entity):
         self.animation_manager.set_default_animation('run')
         self.animation_manager.set_animation('spawn')
 
+    def hit(self, damage: int):
+        pass
+
 
 
     def update(self):
