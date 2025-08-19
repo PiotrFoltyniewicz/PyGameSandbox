@@ -39,7 +39,7 @@ class MainDinoScene(Scene):
 
         x = random.randint(0, MainGame().width)
         y = random.randint(0, MainGame().height)
-        self.add_entity(Goblin(image=load_image('resources/Goblin/RunAnimation/GoblinRun1.png', (64, 64)),
+        self.add_entity(Goblin(image=load_image('resources/Goblin/SpawnAnimation/GoblinSpawn1.png', (64, 64)),
                                    name='Goblin',
                                    draw_order=90,
                                    position=(x,y)))

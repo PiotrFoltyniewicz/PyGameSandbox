@@ -20,13 +20,13 @@ class Goblin(Entity):
         # Initialize animations
         self.animation_manager: AnimationManager = self.add_behaviour(AnimationManager(self))
         self.animation_manager.add_animation('run', 'resources/Goblin/RunAnimation', True)
-        self.animation_manager.add_animation('spawn', 'resources/Goblin/SpawnAnimation', True)
+        self.animation_manager.add_animation('spawn', 'resources/Goblin/SpawnAnimation', False)
         self.animation_manager.set_default_animation('run')
         self.animation_manager.set_animation('spawn')
 
 
 
     def update(self):
-        if self.animation_manager.current_animation == 'run':
+        if self.animation_manager.current_animation.name == 'run':
             self.goblin_movement.set_move_target(MainGame().current_scene.get_entity_by_name('Player').rect.center)
         super().update()
