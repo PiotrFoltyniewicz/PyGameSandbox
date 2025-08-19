@@ -1,3 +1,5 @@
+import math
+
 from src.code.dinoGame.entities.Goblin import Goblin
 from src.code.dinoGame.entities.PlayerDino import PlayerDino
 from src.code.framework.Scene import Scene
@@ -5,6 +7,7 @@ from src.code.framework.MainGame import MainGame
 import pygame
 from src.code.framework.UtilityFunctions import load_image
 import random
+from pygame.math import Vector2
 
 class MainDinoScene(Scene):
     def __init__(self, name: str = "MainDinoScene"):
@@ -39,7 +42,10 @@ class MainDinoScene(Scene):
 
         x = random.randint(0, MainGame().width)
         y = random.randint(0, MainGame().height)
-        self.add_entity(Goblin(image=load_image('resources/Goblin/SpawnAnimation/GoblinSpawn1.png', (64, 64)),
+        PlayerPos: Vector2 = self.get_entity_by_name('Player').rect.center
+        if math.sqrt((PlayerPos.x - x)**2 + (PlayerPos.y - y)**2) < distance_from_player:
+
+            self.add_entity(Goblin(image=load_image('resources/Goblin/SpawnAnimation/GoblinSpawn1.png', (64, 64)),
                                    name='Goblin',
                                    draw_order=90,
                                    position=(x,y)))
