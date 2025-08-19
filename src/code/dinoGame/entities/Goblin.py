@@ -26,6 +26,5 @@ class Goblin(Entity):
 
 
     def update(self):
-
         self.goblin_movement.set_move_target(MainGame().current_scene.get_entity_by_name('Player').rect.center)
         super().update()

@@ -11,13 +11,9 @@ class PlayerAttack(Behaviour):
         super().__init__(self_entity)
         self.entity = self_entity
         self.attack_cooldown_left = 0
-        self.attack_cooldown = 5
+        self.attack_cooldown = 1
 
     def action(self):
-        # Add cooldown management
-        # jeżeli attack_cooldown_left < 0 można attakować
-        # inaczej nie
-        # dodatkowe punkty jeżeli cooldown będzie w sekundach
         time = MainGame().clock.get_time() / 1000
         if self.attack_cooldown_left > 0:
             self.attack_cooldown_left -= time
@@ -26,9 +22,6 @@ class PlayerAttack(Behaviour):
             self.attack()
 
     def attack(self):
-        # Attack behaviour
-        # 1. Check orientation of the player
-        # 2. Spawn fireball in the correct direction
         self.attack_cooldown_left = self.attack_cooldown
         if self.entity.animation_manager.orientation == 'Right':
             x = self.entity.rect.right
