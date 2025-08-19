@@ -25,6 +25,9 @@ class Scene:
                 return entity
         return None
 
+    def get_entities_by_type(self, entity_type: type) -> List[Entity]:
+        return [entity for entity in self.__entities if isinstance(entity, entity_type)]
+
     def remove_entity(self, entity: Entity):
         if entity in self.__entities:
             self.__entities.remove(entity)
